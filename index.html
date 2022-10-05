@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Startcode Exercise 2</title>
+</head>
+<body>
+<div id="all-content" style="display: none">
+    <ul id="menu" class="header">
+        <li><a href="" id="about">About</a></li>
+        <li><a href="/apidock.html" id="ex1">Apidoc</a></li>
+        <li><a href="" id="ex2">Ex2</a></li>
+        <li><a href="" id="ex3">Ex3</a></li>
+    </ul>
+
+    <div class="content">
+        <!-- Exercise-1 -->
+        <div id="ex1_html" style="display: none">
+            <h3>Exercise 1</h3>
+            <p>Add your basic HTML for Exercise 1 here</p>
+            <ul id="jokes"></ul>
+            <a href="/apidock.html" id="apidoc">apidoc</a>
+        </div>
+
+        <!-- End of HTML for exercise-1 -->
+
+        <!-- Exercise-2 -->
+        <div id="ex2_html" style="display: none">
+            <h3>Exercise 2</h3>
+            <p id="ex2p">Add your basic HTML for Exercise 2 here</p>
+        </div>
+        <!-- End of HTML for exercise-2 -->
+
+        <!-- Exercise-3 -->
+        <div id="ex3_html" style="display: none">
+            <h3>Ex-3</h3>
+            <p>Add your basic HTML for Exercise 3 here</p>
+
+            <div class="row" style="min-height: 5em">
+                <div
+                        class="col-md-8 pre-scrollable"
+                        style="background-color: lightgrey"
+                >
+                    <h5>All Users</h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                        </tr>
+                        </thead>
+
+                        <tbody id="allUserRows"></tbody>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col-md-4" style="background-color: powderblue">
+                    <input id="inputFindUserById" type="text" placeholder="Enter id"/>
+                    <button class="findUserById">Find User</button>
+                    <p id="foundUserById"></p>
+                </div>
+            </div>
+            <div class="row" style="min-height: 5em">
+                <div class="col-md-4" style="background-color: powderblue">
+                    <input id="inputEmailUser" type="text" placeholder="Enter your email"/>
+                    <input id="inputFNameUser" type="text" placeholder="Enter first name"/>
+                    <input id="inputLNameUser" type="text" placeholder="Enter last name"/>
+                    <input id="inputPNumberUser" type="text" placeholder="Phone number"/>
+                    <input id="inputPDescriptionUser" type="text" placeholder="Phone description"/>
+                    <input id="inputPPrivateUser" type="checkbox" value="PrivateNumber"/><label for="inputPPrivateUser">My phone is private</label>
+                    <input id="inputAStreetUser" type="text" placeholder="Address street"/>
+                    <input id="inputAAdditionalInfoUser" type="text" placeholder="Additional info"/>
+                    <input id="inputAPrivateUser" type="checkbox" value="PrivateAddress"/><label for="inputAPrivateUser">My address is private</label>
+                    <input id="inputZipCodeUser" type="text" placeholder="Zip code"/>
+                    <button class="createUser">Create your User</button>
+                    <button class="editUser">Make change</button>
+                    <p id="userCreated"></p>
+                </div>
+                <div class="col-md-4" style="background-color: powderblue">
+                    <input id="inputDeleteUser" type="text" placeholder="Enter the user id"/>
+                    <button class="deleteUser">Delete User</button>
+                    <p id="userDeleted"></p>
+                </div>
+            </div>
+        </div>
+        <!-- End of HTML for exercise-3 -->
+
+        <!---- HTML for the About page -->
+        <div id="about_html" style="display: none">
+            <h3>About</h3>
+            <p>
+                Watch the small video given as intro to this code, BEFORE you start
+                using it
+            </p>
+        </div>
+        <!-- End of HTML for ABOUT Page -->
+
+        <!--End of all content -->
+    </div>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>
