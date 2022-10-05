@@ -32,6 +32,24 @@ function unCheckPrivateAddress() {
   document.getElementById("inputAPrivateUser").checked = false;
 }
 
+function checkStatusPhone(input) {
+  if (document.getElementById("inputPPrivateUser").checked === false) {
+    input = false;
+  } else {
+    input = true;
+  }
+  return input;
+}
+
+function checkStatusAddress(input) {
+  if (document.getElementById("inputAPrivateUser").checked === false) {
+    input = false;
+  } else {
+    input = true;
+  }
+  return input;
+}
+
 function hideAllShowOne(idToShow) {
   document.getElementById("about_html").style = "display:none";
   document.getElementById("ex1_html").style = "display:none";
@@ -85,24 +103,38 @@ function menuItemClicked(evt) {
       })
 
       document.querySelector(".createUser").addEventListener("click",() => {
+        const phoneStatus = false
+        const addressStatus = false
+
+        checkStatusPhone(phoneStatus)
+
+        checkStatusAddress(addressStatus)
         const user = {
           email: document.getElementById("inputEmailUser").value,
           firstName: document.getElementById("inputFNameUser").value,
           lastName: document.getElementById("inputLNameUser").value,
           number: document.getElementById("inputPNumberUser").value,
           description: document.getElementById("inputPDescriptionUser").value,
-          phonePrivate: document.getElementById("inputPPrivateUser").value,
+          phonePrivate: phoneStatus,
           street: document.getElementById("inputAStreetUser").value,
           info: document.getElementById("inputAAdditionalInfoUser").value,
-          addressPrivate: document.getElementById("inputAPrivateUser").value,
+          addressPrivate: addressStatus,
           zipCode: document.getElementById("inputZipCodeUser").value
         }
+        console.log(user);
         userFacade.createUser(user).then(data => {
           document.getElementById("userCreated").innerText = JSON.stringify(data)
         })
       })
 
       document.querySelector(".editUser").addEventListener("click",() => {
+        const phoneStatus = false
+        const addressStatus = false
+
+        checkStatusPhone(phoneStatus)
+
+        checkStatusAddress(addressStatus)
+
         const user = {
           id: document.getElementById("inputFindUserById").value,
           email: document.getElementById("inputEmailUser").value,
@@ -110,10 +142,10 @@ function menuItemClicked(evt) {
           lastName: document.getElementById("inputLNameUser").value,
           number: document.getElementById("inputPNumberUser").value,
           description: document.getElementById("inputPDescriptionUser").value,
-          phonePrivate: document.getElementById("inputPPrivateUser").value,
+          phonePrivate: phoneStatus,
           street: document.getElementById("inputAStreetUser").value,
           info: document.getElementById("inputAAdditionalInfoUser").value,
-          addressPrivate: document.getElementById("inputAPrivateUser").value,
+          addressPrivate: addressStatus,
           zipCode: document.getElementById("inputZipCodeUser").value
         }
         userFacade.editUser(user,user.id).then(data => {
