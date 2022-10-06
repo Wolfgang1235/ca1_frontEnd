@@ -53,7 +53,6 @@ function checkStatusAddress(input) {
 function hideAllShowOne(idToShow) {
   document.getElementById("about_html").style = "display:none";
   document.getElementById("ex1_html").style = "display:none";
-  document.getElementById("ex2_html").style = "display:none";
   document.getElementById("ex3_html").style = "display:none";
   document.getElementById(idToShow).style = "display:block";
 }
@@ -63,9 +62,6 @@ function menuItemClicked(evt) {
   switch (id) {
     case "ex1":
       hideAllShowOne("ex1_html");
-      break;
-    case "ex2":
-      hideAllShowOne("ex2_html");
       break;
     case "ex3":
       hideAllShowOne("ex3_html");
@@ -89,7 +85,7 @@ function menuItemClicked(evt) {
           }
 
           document.getElementById("inputAStreetUser").value = data.address.street
-          document.getElementById("inputAAdditionalInfoUser").value = data.address.street
+          document.getElementById("inputAAdditionalInfoUser").value = data.address.additionalInfo
           let isAddressPrivate = data.address.isPrivate
           if (isAddressPrivate === true) {
             checkPrivateAddress()
@@ -103,51 +99,64 @@ function menuItemClicked(evt) {
       })
 
       document.querySelector(".createUser").addEventListener("click",() => {
-        const phoneStatus = false
-        const addressStatus = false
+        let phoneStatus = false
+        let addressStatus = false
 
-        checkStatusPhone(phoneStatus)
+        phoneStatus = checkStatusPhone(phoneStatus)
 
-        checkStatusAddress(addressStatus)
+        addressStatus = checkStatusAddress(addressStatus)
+
         const user = {
           email: document.getElementById("inputEmailUser").value,
           firstName: document.getElementById("inputFNameUser").value,
           lastName: document.getElementById("inputLNameUser").value,
-          number: document.getElementById("inputPNumberUser").value,
-          description: document.getElementById("inputPDescriptionUser").value,
-          phonePrivate: phoneStatus,
-          street: document.getElementById("inputAStreetUser").value,
-          info: document.getElementById("inputAAdditionalInfoUser").value,
-          addressPrivate: addressStatus,
-          zipCode: document.getElementById("inputZipCodeUser").value
+          phone: {
+            number: document.getElementById("inputPNumberUser").value,
+            description: document.getElementById("inputPDescriptionUser").value,
+            isPrivate: phoneStatus
+          },
+          address: {
+            street: document.getElementById("inputAStreetUser").value,
+            additionalInfo: document.getElementById("inputAAdditionalInfoUser").value,
+            isPrivate: addressStatus,
+            cityInfo: {
+              zipCode: document.getElementById("inputZipCodeUser").value
+            }
+          }
         }
-        console.log(user);
         userFacade.createUser(user).then(data => {
           document.getElementById("userCreated").innerText = JSON.stringify(data)
         })
       })
 
       document.querySelector(".editUser").addEventListener("click",() => {
-        const phoneStatus = false
-        const addressStatus = false
+        let phoneStatus = false
+        let addressStatus = false
 
-        checkStatusPhone(phoneStatus)
+        phoneStatus = checkStatusPhone(phoneStatus)
 
-        checkStatusAddress(addressStatus)
+        addressStatus = checkStatusAddress(addressStatus)
 
         const user = {
           id: document.getElementById("inputFindUserById").value,
           email: document.getElementById("inputEmailUser").value,
           firstName: document.getElementById("inputFNameUser").value,
           lastName: document.getElementById("inputLNameUser").value,
-          number: document.getElementById("inputPNumberUser").value,
-          description: document.getElementById("inputPDescriptionUser").value,
-          phonePrivate: phoneStatus,
-          street: document.getElementById("inputAStreetUser").value,
-          info: document.getElementById("inputAAdditionalInfoUser").value,
-          addressPrivate: addressStatus,
-          zipCode: document.getElementById("inputZipCodeUser").value
+          phone: {
+            number: document.getElementById("inputPNumberUser").value,
+            description: document.getElementById("inputPDescriptionUser").value,
+            isPrivate: phoneStatus
+          },
+          address: {
+            street: document.getElementById("inputAStreetUser").value,
+            additionalInfo: document.getElementById("inputAAdditionalInfoUser").value,
+            isPrivate: addressStatus,
+            cityInfo: {
+              zipCode: document.getElementById("inputZipCodeUser").value
+            }
+          }
         }
+        console.log(user);
         userFacade.editUser(user,user.id).then(data => {
           document.getElementById("userCreated").innerText = JSON.stringify(data)
         })
@@ -155,9 +164,7 @@ function menuItemClicked(evt) {
 
       document.querySelector(".deleteUser").addEventListener("click",() => {
         const idToDelete = document.getElementById("inputDeleteUser").value
-        userFacade.deleteUser(idToDelete).then(data => {
-          document.getElementById("userDeleted").innerText = JSON.stringify(data)
-        })
+        userFacade.deleteUser(idToDelete)
       })
 
       break;

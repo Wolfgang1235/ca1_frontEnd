@@ -19,8 +19,7 @@ function editUser(user,id) {
 
 function deleteUser(id) {
     const options = makeOptions("DELETE")
-    return fetch(`${URL}/${id}`,options)
-        .then(response => response.json())
+    fetch(`${URL}/${id}`,options)
 }
 
 const userFacade = {
