@@ -1,4 +1,4 @@
-const URL = "http://gaagle.info/ca1_3sem/api/persons"
+const URL = "https://gaagle.info/ca1_3sem/api/persons"
 
 function getUserById(id) {
     return fetch(`${URL}/${id}`)
