@@ -2,12 +2,12 @@
 
 # PROJECT_NAME="Name or your frontend project, for example movie --> folder you created under /var/www"
 # DROPLET_URL="URL for your droplet"
-echo -n "please enter the project name as it appears on the server in /var/www/"
+echo -n "ca1_3sem"
 read -r 
-PROJECT_NAME=ca1
-echo -n "please enter the droplet url (e.g myserver.dk)"
+PROJECT_NAME=$REPLY
+echo -n "gaagle.info"
 read -r
-DROPLET_URL=gaagle.info
+DROPLET_URL=$REPLY
 
 echo "##############################"
 echo "Building the frontend project"
