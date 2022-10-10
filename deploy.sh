@@ -4,10 +4,10 @@
 # DROPLET_URL="URL for your droplet"
 echo -n "please enter the project name as it appears on the server in /var/www/"
 read -r 
-PROJECT_NAME=$REPLY
+PROJECT_NAME=ca1
 echo -n "please enter the droplet url (e.g myserver.dk)"
 read -r
-DROPLET_URL=$REPLY
+DROPLET_URL=gaagle.info
 
 echo "##############################"
 echo "Building the frontend project"
