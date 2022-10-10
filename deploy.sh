@@ -4,10 +4,10 @@
 # DROPLET_URL="URL for your droplet"
 echo -n "ca1_3sem"
 read -r 
-PROJECT_NAME="$REPLY"
+PROJECT_NAME="$ca1_frontend"
 echo -n "gaagle.info"
 read -r
-DROPLET_URL=$REPLY
+DROPLET_URL="gaagle.info"
 
 echo "##############################"
 echo "Building the frontend project"
